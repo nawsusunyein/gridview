@@ -2,6 +2,7 @@ package com.example.gridviewtest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent fullImageIntent = new Intent(MainActivity.this,FullImageActivity.class);
+                fullImageIntent.putExtra("pos",position);
+                fullImageIntent.putExtra("imgName",thumnailImages[position]);
+                startActivity(fullImageIntent);
                 Toast.makeText(MainActivity.this, imageNames[position]+" Clicked", Toast.LENGTH_SHORT).show();
             }
         });
